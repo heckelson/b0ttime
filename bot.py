@@ -10,9 +10,6 @@ from pydub.playback import play
 ##### RESSOURCES: #########################################################
 # Tutorial on how to make this bot:
 # https://dev.to/ninjabunny9000/let-s-make-a-twitch-bot-with-python-2nd8
-#
-# Tutorial on how to play sounds in python.
-# https://linuxhint.com/play_sound_python/ <-- sound commands?
 ###########################################################################
 
 
@@ -27,7 +24,7 @@ bot = commands.Bot(
     initial_channels=[os.environ['CHANNEL']]
 )
 
-
+# how loud the sound effects are going to play
 volume = 10
 
 def playsound(filename):
