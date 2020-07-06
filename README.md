@@ -5,7 +5,7 @@ a smol twitch bot
 
 * `pipenv`
 
-On Arch Linux it's as simple as: 
+On Arch Linux it's as simple as:     
 `# pacman -Syu && sudo pacman -S python-pipenv`
 
 Inside the folder, install the packages
