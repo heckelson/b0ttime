@@ -14,7 +14,11 @@ from counter import Counter
 ###########################################################################
 
 
-# initial volume of the sound bits
+# TODO:
+# * implement !help commands
+# randomly generated dark souls commands:
+# https://darksouls.fandom.com/wiki/Messages
+
 
 # set up the bot
 bot = commands.Bot(
@@ -114,6 +118,7 @@ async def steam(ctx):
 
 
 # Counter Commands
+
 @bot.command(name='count')
 async def count(ctx):
     await ctx.send(f"The counter is currently at: {counter.count}")
@@ -125,11 +130,13 @@ async def increment(ctx):
     counter.write_count()
     await ctx.send(f"The counter is now at: {counter.count}")
 
+
 @bot.command(name='decrement')
 async def decrement(ctx):
     counter.decrement()
     counter.write_count()
     await ctx.send(f"The counter is now at: {counter.count}")
+
 
 @bot.command(name='reset')
 async def reset(ctx):
