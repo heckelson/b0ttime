@@ -6,6 +6,7 @@ from twitchio.ext import commands
 from pydub import AudioSegment
 from pydub.playback import play
 
+from counter import Counter
 
 ##### RESSOURCES: #########################################################
 # Tutorial on how to make this bot:
@@ -24,8 +25,13 @@ bot = commands.Bot(
     initial_channels=[os.environ['CHANNEL']]
 )
 
+# set up a counter
+counter = Counter()
+
+
 # how loud the sound effects are going to play
-volume = 10
+volume = 7
+
 
 def playsound(filename):
     if filename.endswith(".mp3"):
@@ -41,12 +47,12 @@ def playsound(filename):
 async def event_ready():
     print(f"{os.environ['BOT_NICK']} is online!")
     ws = bot._ws 
-    await ws.send_privmsg(os.environ['CHANNEL'], "/me successfully booted!")
+    await ws.send_privmsg(os.environ['CHANNEL'], "/me successfully b00ted!")
 
 
 @bot.command(name='test')
 async def test(ctx):
-    await ctx.send('/me Test successful')
+    await ctx.send('/me Test successful!')
 
 
 @bot.command(name='kill')
@@ -106,6 +112,44 @@ async def steam(ctx):
     await ctx.send('/me got a new message')
     playsound('sounds/steam.mp3')
 
+
+# Counter Commands
+@bot.command(name='count')
+async def count(ctx):
+    await ctx.send(f"The counter is currently at: {counter.count}")
+
+
+@bot.command(name='increment')
+async def increment(ctx):
+    counter.increment()
+    counter.write_count()
+    await ctx.send(f"The counter is now at: {counter.count}")
+
+@bot.command(name='decrement')
+async def decrement(ctx):
+    counter.decrement()
+    counter.write_count()
+    await ctx.send(f"The counter is now at: {counter.count}")
+
+@bot.command(name='reset')
+async def reset(ctx):
+    counter.reset()
+    counter.write_count()
+    await ctx.send("The counter has been reset (0).")
+
+
+@bot.command(name="modify")
+async def modify(ctx, modifier):
+    counter.modify(modifier)
+    counter.write_count()
+    await ctx.send(f"The counter has been modified and is now at: {counter.count}")
+
+
+@bot.command(name='set')
+async def set(ctx, newval):
+    counter.set(newval)
+    counter.write_count()
+    await ctx.send(f"The counter has been set to: {counter.count}")
 
 
 
