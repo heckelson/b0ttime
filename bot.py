@@ -14,7 +14,10 @@ from counter import Counter
 ###########################################################################
 
 
-# initial volume of the sound bits
+# TODO:
+# * randomly generated dark souls commands:
+#   https://darksouls.fandom.com/wiki/Messages
+
 
 # set up the bot
 bot = commands.Bot(
@@ -64,11 +67,6 @@ async def kill(ctx):
         return
 
 
-@bot.command(name='sounds')
-async def sounds(ctx):
-    await ctx.send(f'@{ctx.author.name} Available sound commands are: !alert !modem !oof !oooooof !steam !yeet !youdied')
-
-
 # Sound Commands
 
 @bot.command(name='alert')
@@ -114,6 +112,7 @@ async def steam(ctx):
 
 
 # Counter Commands
+
 @bot.command(name='count')
 async def count(ctx):
     await ctx.send(f"The counter is currently at: {counter.count}")
@@ -125,11 +124,13 @@ async def increment(ctx):
     counter.write_count()
     await ctx.send(f"The counter is now at: {counter.count}")
 
+
 @bot.command(name='decrement')
 async def decrement(ctx):
     counter.decrement()
     counter.write_count()
     await ctx.send(f"The counter is now at: {counter.count}")
+
 
 @bot.command(name='reset')
 async def reset(ctx):
@@ -152,6 +153,19 @@ async def set(ctx, newval):
     await ctx.send(f"The counter has been set to: {counter.count}")
 
 
+@bot.command(name='help')
+async def help(ctx, topic='overview'):
+    if topic == 'overview':
+        await ctx.send(f"/me @{ctx.author.name} See '!help <topic>' to learn about a specific topic. Available topics: sounds, counter, about")
+    elif topic == 'sounds':
+        await ctx.send(f'/me @{ctx.author.name} Available sound commands are: !alert !modem !oof !oooooof !steam !yeet !youdied')
+    elif topic == 'counter':
+        await ctx.send(f'/me @{ctx.author.name} Available counter commands are: !count (show current count) !increment (count + 1) !decrement (count - 1) !reset (count = 0) !modify +/-n (count +/- n) !set n (counter = n)')
+    elif topic == 'about':
+        await ctx.send("This bot was made by sn0wtime. For more information, check out the source code on Github: https://github.com/heckelson/b0ttime")
+    else:
+        pass
 
 if __name__ == "__main__":
     bot.run()
+
