@@ -15,9 +15,8 @@ from counter import Counter
 
 
 # TODO:
-# * implement !help commands
-# randomly generated dark souls commands:
-# https://darksouls.fandom.com/wiki/Messages
+# * randomly generated dark souls commands:
+#   https://darksouls.fandom.com/wiki/Messages
 
 
 # set up the bot
@@ -66,11 +65,6 @@ async def kill(ctx):
         sys.exit()
     else:
         return
-
-
-@bot.command(name='sounds')
-async def sounds(ctx):
-    await ctx.send(f'@{ctx.author.name} Available sound commands are: !alert !modem !oof !oooooof !steam !yeet !youdied')
 
 
 # Sound Commands
@@ -159,6 +153,19 @@ async def set(ctx, newval):
     await ctx.send(f"The counter has been set to: {counter.count}")
 
 
+@bot.command(name='help')
+async def help(ctx, topic='overview'):
+    if topic == 'overview':
+        await ctx.send(f"/me @{ctx.author.name} See '!help <topic>' to learn about a specific topic. Available topics: sounds, counter, about")
+    elif topic == 'sounds':
+        await ctx.send(f'/me @{ctx.author.name} Available sound commands are: !alert !modem !oof !oooooof !steam !yeet !youdied')
+    elif topic == 'counter':
+        await ctx.send(f'/me @{ctx.author.name} Available counter commands are: !count (show current count) !increment (count + 1) !decrement (count - 1) !reset (count = 0) !modify +/-n (count +/- n) !set n (counter = n)')
+    elif topic == 'about':
+        await ctx.send("This bot was made by sn0wtime. For more information, check out the source code on Github: https://github.com/heckelson/b0ttime")
+    else:
+        pass
 
 if __name__ == "__main__":
     bot.run()
+
