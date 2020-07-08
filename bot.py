@@ -7,16 +7,14 @@ from pydub import AudioSegment
 from pydub.playback import play
 
 from counter import Counter
+from dsmessages import DSMessages
+
 
 ##### RESSOURCES: #########################################################
 # Tutorial on how to make this bot:
 # https://dev.to/ninjabunny9000/let-s-make-a-twitch-bot-with-python-2nd8
 ###########################################################################
 
-
-# TODO:
-# * randomly generated dark souls commands:
-#   https://darksouls.fandom.com/wiki/Messages
 
 
 # set up the bot
@@ -31,6 +29,8 @@ bot = commands.Bot(
 # set up a counter
 counter = Counter()
 
+# set up dark souls messages
+dsmsg = DSMessages()
 
 # how loud the sound effects are going to play
 volume = 7
@@ -165,6 +165,12 @@ async def help(ctx, topic='overview'):
         await ctx.send("This bot was made by sn0wtime. For more information, check out the source code on Github: https://github.com/heckelson/b0ttime")
     else:
         pass
+
+
+@bot.command(name='dsmessage')
+async def dsmessage(ctx):
+    await ctx.send(f"/me {dsmsg.randommsg()}")
+
 
 if __name__ == "__main__":
     bot.run()
