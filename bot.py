@@ -15,6 +15,10 @@ from dsmessages import DSMessages
 # https://dev.to/ninjabunny9000/let-s-make-a-twitch-bot-with-python-2nd8
 ###########################################################################
 
+# TODO
+# * command cooldown
+
+
 
 
 # set up the bot
@@ -111,6 +115,13 @@ async def steam(ctx):
     playsound('sounds/steam.mp3')
 
 
+@bot.command(name='objection')
+async def objection(ctx):
+    await ctx.send('/me OBJECTION!')
+    playsound('sounds/objection.mp3')
+
+
+
 # Counter Commands
 
 @bot.command(name='count')
@@ -158,7 +169,7 @@ async def help(ctx, topic='overview'):
     if topic == 'overview':
         await ctx.send(f"/me @{ctx.author.name} See '!help <topic>' to learn about a specific topic. Available topics: sounds, counter, about")
     elif topic == 'sounds':
-        await ctx.send(f'/me @{ctx.author.name} Available sound commands are: !alert !modem !oof !oooooof !steam !yeet !youdied')
+        await ctx.send(f'/me @{ctx.author.name} Available sound commands are: !alert !modem !objection !oof !oooooof !steam !yeet !youdied')
     elif topic == 'counter':
         await ctx.send(f'/me @{ctx.author.name} Available counter commands are: !count (show current count) !increment (count + 1) !decrement (count - 1) !reset (count = 0) !modify +/-n (count +/- n) !set n (counter = n)')
     elif topic == 'about':
