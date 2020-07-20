@@ -50,12 +50,16 @@ def playsound(filename):
     play(sound)
 
 
+# Bot events
+
 @bot.event
 async def event_ready():
     print(f"{os.environ['BOT_NICK']} is online!")
     ws = bot._ws 
     await ws.send_privmsg(os.environ['CHANNEL'], "/me successfully b00ted!")
 
+
+# Utility commands
 
 @bot.command(name='test')
 async def test(ctx):
@@ -180,8 +184,10 @@ async def help(ctx, topic='overview'):
 
 @bot.command(name='dsmessage')
 async def dsmessage(ctx):
-    await ctx.send(f"/me {dsmsg.randommsg()}")
-
+    message = dsmsg.randommsg()
+    await ctx.send(f"/me {message}")
+    if message == "Praise the Sun!":
+        playsound("sounds/praise.mp3")
 
 if __name__ == "__main__":
     bot.run()
