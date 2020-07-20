@@ -5,12 +5,22 @@ a smol twitch bot
 
 * `pipenv`
 
-Inside pipenv, install the following packages:
+On Arch Linux it's as simple as:     
+`# pacman -Syu && sudo pacman -S python-pipenv`
+
+Inside the folder, install the packages
 
 * `twitchio`
 * `pydub`
 
-## `.env` file
+like this:
+```
+$ pipenv lock
+$ pipenv install twitchio
+$ pipenv install pydub
+``` 
+
+## Create the `.env` file
 
 You have to create a file named `.env`. Inside this file, write the following:
 ```
@@ -21,3 +31,6 @@ BOT_NICK=<YOUR TWITCH BOT CHANNEL NAME>
 BOT_PREFIX=!
 CHANNEL=<YOUR STREAMING CHANNEL NAME>
 ```
+
+[Twitch TMI token](https://twitchapps.com/tmi/)    
+[Twitch Client ID](https://dev.twitch.tv/console/apps/create)
