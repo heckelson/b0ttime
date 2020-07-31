@@ -32,14 +32,13 @@ class DSMessages:
                "Despair", "Light", "Dark", "Bravery", "Resignation", "Comfort", "Tears"]
 
     def randommsg(self):
-        # segmented 175:5 full message
+        # segmented message 175:5 full message
         msgtype = random.randint(1, 180)
 
         if msgtype <= 175:
-            # generate a segmented message
+            # generate a message out of a segment and an insert
             segment = random.choice(self.segments)
             insert = random.choice(self.inserts)
-
             return segment.replace("****", insert)
         else:
             return random.choice(self.fullmsg)

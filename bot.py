@@ -1,22 +1,18 @@
 # bot.py
+
 import os
 import sys
 
-from pydub import AudioSegment
-from pydub.playback import play
 from twitchio.ext import commands
 
 from counter import Counter
 from dsmessages import DSMessages
+from sound import Sound
 
 # RESSOURCES: #############################################################
 # Tutorial on how to make this bot:
 # https://dev.to/ninjabunny9000/let-s-make-a-twitch-bot-with-python-2nd8
 ###########################################################################
-
-# TODO
-# * command cooldown
-
 
 # set up the bot
 bot = commands.Bot(
@@ -33,18 +29,8 @@ counter = Counter()
 # set up dark souls messages
 dsmsg = DSMessages()
 
-# how loud the sound effects are going to play
-volume = 7
-
-
-def playsound(filename):
-    if filename.endswith(".mp3"):
-        sound = AudioSegment.from_mp3(filename) + volume
-    elif filename.endswith(".wav"):
-        sound = AudioSegment.from_file(filename) + volume
-    else:
-        return
-    play(sound)
+# set up sound cooldown (global)
+sound = Sound()
 
 
 # Bot events
@@ -52,11 +38,10 @@ def playsound(filename):
 @bot.event
 async def event_ready():
     print(f"{os.environ['BOT_NICK']} is online!")
-    await bot._ws.send_privmsg(os.environ['CHANNEL'], "/me successfully b00ted!")
+    await bot.ws.send_privmsg(os.environ['CHANNEL'], "/me successfully b00ted!")
 
 
 # Utility commands
-
 
 @bot.command(name='test')
 async def test(ctx):
@@ -77,49 +62,49 @@ async def kill(ctx):
 @bot.command(name='alert')
 async def alert(ctx):
     await ctx.send('/me !')
-    playsound("sounds/alert.mp3")
+    sound.play("sounds/alert.mp3")
 
 
 @bot.command(name='modem')
 async def modem(ctx):
     await ctx.send('/me does not compute...')
-    playsound("sounds/modem.mp3")
+    sound.play("sounds/modem.mp3")
 
 
 @bot.command(name='yeet')
 async def yeet(ctx):
     await ctx.send('/me yeet')
-    playsound("sounds/yeet.mp3")
+    sound.play("sounds/yeet.mp3")
 
 
 @bot.command(name='oof')
 async def oof(ctx):
     await ctx.send('/me oof')
-    playsound("sounds/oof.mp3")
+    sound.play("sounds/oof.mp3")
 
 
 @bot.command(name='oooooof')
 async def oooooof(ctx):
     await ctx.send('/me oooooof')
-    playsound("sounds/oooooof.mp3")
+    sound.play("sounds/oooooof.mp3")
 
 
 @bot.command(name='youdied')
 async def youdied(ctx):
     await ctx.send('/me YOU DIED')
-    playsound("sounds/youdied.mp3")
+    sound.play("sounds/youdied.mp3")
 
 
 @bot.command(name='steam')
 async def steam(ctx):
     await ctx.send('/me got a new message')
-    playsound('sounds/steam.mp3')
+    sound.play('sounds/steam.mp3')
 
 
 @bot.command(name='objection')
 async def objection(ctx):
     await ctx.send('/me OBJECTION!')
-    playsound('sounds/objection.mp3')
+    sound.play('sounds/objection.mp3')
 
 
 # Counter Commands
@@ -191,8 +176,9 @@ async def dsmessage(ctx):
     message = dsmsg.randommsg()
     await ctx.send(f"/me {message}")
     if message == "Praise the Sun!":
-        playsound("sounds/praise.mp3")
+        sound.play("sounds/praise.mp3")
 
 
 if __name__ == "__main__":
     bot.run()
+
