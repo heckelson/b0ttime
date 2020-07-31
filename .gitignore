@@ -1,2 +1,4 @@
 .env
 count
+.idea/
+.idea/*

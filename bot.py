@@ -1,24 +1,21 @@
 # bot.py
-import os 
+import os
 import sys
 
-from twitchio.ext import commands
 from pydub import AudioSegment
 from pydub.playback import play
+from twitchio.ext import commands
 
 from counter import Counter
 from dsmessages import DSMessages
 
-
-##### RESSOURCES: #########################################################
+# RESSOURCES: #############################################################
 # Tutorial on how to make this bot:
 # https://dev.to/ninjabunny9000/let-s-make-a-twitch-bot-with-python-2nd8
 ###########################################################################
 
 # TODO
 # * command cooldown
-
-
 
 
 # set up the bot
@@ -55,11 +52,11 @@ def playsound(filename):
 @bot.event
 async def event_ready():
     print(f"{os.environ['BOT_NICK']} is online!")
-    ws = bot._ws 
-    await ws.send_privmsg(os.environ['CHANNEL'], "/me successfully b00ted!")
+    await bot._ws.send_privmsg(os.environ['CHANNEL'], "/me successfully b00ted!")
 
 
 # Utility commands
+
 
 @bot.command(name='test')
 async def test(ctx):
@@ -125,7 +122,6 @@ async def objection(ctx):
     playsound('sounds/objection.mp3')
 
 
-
 # Counter Commands
 
 @bot.command(name='count')
@@ -171,13 +167,21 @@ async def set(ctx, newval):
 @bot.command(name='help')
 async def help(ctx, topic='overview'):
     if topic == 'overview':
-        await ctx.send(f"/me @{ctx.author.name} See '!help <topic>' to learn about a specific topic. Available topics: sounds, counter, about")
+        await ctx.send(
+            f"/me @{ctx.author.name} See '!help <topic>' to learn about a specific topic."
+            f" Available topics: sounds, counter, about")
     elif topic == 'sounds':
-        await ctx.send(f'/me @{ctx.author.name} Available sound commands are: !alert !modem !objection !oof !oooooof !steam !yeet !youdied')
+        await ctx.send(
+            f'/me @{ctx.author.name} Available sound commands are: !alert !modem !objection'
+            f' !oof !oooooof !steam !yeet !youdied')
     elif topic == 'counter':
-        await ctx.send(f'/me @{ctx.author.name} Available counter commands are: !count (show current count) !increment (count + 1) !decrement (count - 1) !reset (count = 0) !modify +/-n (count +/- n) !set n (counter = n)')
+        await ctx.send(
+            f'/me @{ctx.author.name} Available counter commands are: !count (show current count) !increment (count + 1)'
+            f' !decrement (count - 1) !reset (count = 0) !modify +/-n (count +/- n) !set n (counter = n)')
     elif topic == 'about':
-        await ctx.send("This bot was made by sn0wtime. For more information, check out the source code on Github: https://github.com/heckelson/b0ttime")
+        await ctx.send(
+            "This bot was made by sn0wtime. For more information, check out the source code on Github:"
+            " https://github.com/heckelson/b0ttime")
     else:
         pass
 
@@ -189,6 +193,6 @@ async def dsmessage(ctx):
     if message == "Praise the Sun!":
         playsound("sounds/praise.mp3")
 
+
 if __name__ == "__main__":
     bot.run()
-
