@@ -6,7 +6,9 @@ a smol twitch bot
 * `pipenv`
 
 On Arch Linux it's as simple as:     
-`# pacman -Syu && sudo pacman -S python-pipenv`
+```bash
+# pacman -S python-pipenv
+```
 
 Inside the folder, install the packages
 
@@ -14,7 +16,7 @@ Inside the folder, install the packages
 * `pydub`
 
 like this:
-```
+```bash
 $ pipenv lock
 $ pipenv install twitchio
 $ pipenv install pydub
@@ -23,7 +25,7 @@ $ pipenv install pydub
 ## Create the `.env` file
 
 You have to create a file named `.env`. Inside this file, write the following:
-```
+```env
 # .env
 TMI_TOKEN=<YOUR TWITCH TMI TOKEN>
 CLIENT_ID=<YOUR TWITCH BOT CLIENT ID>
