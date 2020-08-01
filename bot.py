@@ -5,6 +5,7 @@ import sys
 
 from twitchio.ext import commands
 
+# 
 from counter import Counter
 from dsmessages import DSMessages
 from sound import Sound
@@ -13,6 +14,12 @@ from sound import Sound
 # Tutorial on how to make this bot:
 # https://dev.to/ninjabunny9000/let-s-make-a-twitch-bot-with-python-2nd8
 ###########################################################################
+
+# TODO: ###################################################################
+# * Refactor so that the bot doesn't show the message if the sound isn't
+# played (maybe have the function return a boolean?)
+
+
 
 # set up the bot
 bot = commands.Bot(
