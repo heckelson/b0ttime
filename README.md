@@ -12,12 +12,14 @@ Inside the folder, install the packages
 
 * `twitchio`
 * `pydub`
+* `simpleaudio`
 
 like this:
 ```
 $ pipenv lock
 $ pipenv install twitchio
 $ pipenv install pydub
+$ pipenv install simpleaudio
 ``` 
 
 ## Create the `.env` file
