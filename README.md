@@ -6,7 +6,7 @@ a smol twitch bot
 * `pipenv`
 
 On Arch Linux it's as simple as:     
-```bash
+```
 # pacman -S python-pipenv
 ```
 
