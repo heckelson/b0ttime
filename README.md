@@ -18,7 +18,6 @@ Inside the folder, install the packages
 
 like this:
 ```bash
-$ pipenv lock
 $ pipenv install twitchio
 $ pipenv install pydub
 $ pipenv install simpleaudio
