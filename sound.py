@@ -6,7 +6,7 @@ from pydub.playback import play
 
 
 class Sound:
-    cooldown = -1 # cooldown is off (-1)
+    cooldown = 5 # cooldown is off (-1)
     volume = 7
     last_played = 0
 
@@ -26,6 +26,9 @@ class Sound:
         else:
             return
         play(sound)
+
+    def is_on_cooldown(self):
+        return time.time() <= (self.last_played + self.cooldown)
 
 
 if __name__ == "__main__":

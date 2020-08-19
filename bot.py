@@ -5,7 +5,6 @@ import sys
 
 from twitchio.ext import commands
 
-# 
 from counter import Counter
 from dsmessages import DSMessages
 from sound import Sound
@@ -68,49 +67,57 @@ async def kill(ctx):
 
 @bot.command(name='alert')
 async def alert(ctx):
-    await ctx.send('/me !')
+    if not sound.is_on_cooldown():
+        await ctx.send('/me !')
     sound.play("sounds/alert.mp3")
 
 
 @bot.command(name='modem')
 async def modem(ctx):
-    await ctx.send('/me does not compute...')
+    if not sound.is_on_cooldown():
+        await ctx.send('/me does not compute...')
     sound.play("sounds/modem.mp3")
 
 
 @bot.command(name='yeet')
 async def yeet(ctx):
-    await ctx.send('/me yeet')
+    if not sound.is_on_cooldown():
+        await ctx.send('/me yeet')
     sound.play("sounds/yeet.mp3")
 
 
 @bot.command(name='oof')
 async def oof(ctx):
-    await ctx.send('/me oof')
+    if not sound.is_on_cooldown():
+        await ctx.send('/me oof')
     sound.play("sounds/oof.mp3")
 
 
 @bot.command(name='oooooof')
 async def oooooof(ctx):
-    await ctx.send('/me oooooof')
+    if not sound.is_on_cooldown():
+        await ctx.send('/me oooooof')
     sound.play("sounds/oooooof.mp3")
 
 
 @bot.command(name='youdied')
 async def youdied(ctx):
-    await ctx.send('/me YOU DIED')
+    if not sound.is_on_cooldown():
+        await ctx.send('/me YOU DIED')
     sound.play("sounds/youdied.mp3")
 
 
 @bot.command(name='steam')
 async def steam(ctx):
-    await ctx.send('/me got a new message')
+    if not sound.is_on_cooldown():
+        await ctx.send('/me got a new message')
     sound.play('sounds/steam.mp3')
 
 
 @bot.command(name='objection')
 async def objection(ctx):
-    await ctx.send('/me OBJECTION!')
+    if not sound.is_on_cooldown():
+        await ctx.send('/me OBJECTION!')
     sound.play('sounds/objection.mp3')
 
 
