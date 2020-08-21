@@ -15,9 +15,7 @@ from sound import Sound
 ###########################################################################
 
 # TODO: ###################################################################
-# * Refactor so that the bot doesn't show the message if the sound isn't
-# played (maybe have the function return a boolean?)
-
+# * add a sound of eric andre saying "Cheers I'll drink to that bro" https://www.youtube.com/watch?v=O35Dxb_V2Sc
 
 
 # set up the bot
