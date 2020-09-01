@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f8c1e4c3cb23aab61e0abdc8edf6eb4a07b0110f85e1706b3e106c479ba40d5d"
+            "sha256": "0b4a04702b682ef2c358a9e8299c35628c0c7c3d141b46c895a39adedcebbe70"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -44,11 +44,11 @@
         },
         "attrs": {
             "hashes": [
-                "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c",
-                "sha256:f7b7ce16570fe9965acd6d30101a28f62fb4a7f9e926b3bbc9b61f8b04247e72"
+                "sha256:0ef97238856430dcf9228e07f316aefc17e8939fc8507e18c6501b761ef1a42a",
+                "sha256:2867b7b9f8326499ab5b0e2d12801fa5c98842d2cbd22b35112ae04bf85b4dff"
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
-            "version": "==19.3.0"
+            "version": "==20.1.0"
         },
         "chardet": {
             "hashes": [
@@ -56,6 +56,13 @@
                 "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"
             ],
             "version": "==3.0.4"
+        },
+        "evdev": {
+            "hashes": [
+                "sha256:b1c649b4fed7252711011da235782b2c260b32e004058d62473471e5cd30634d"
+            ],
+            "markers": "'linux' in sys_platform",
+            "version": "==1.3.0"
         },
         "idna": {
             "hashes": [
@@ -96,6 +103,23 @@
             "index": "pypi",
             "version": "==0.24.1"
         },
+        "pynput": {
+            "hashes": [
+                "sha256:452e1f23ed1c2e85e61b2daedc8b6a5481a696b1ed1b98ef0ab164038a104adf",
+                "sha256:5a5598bfb14322eff980ac6ca820635fce9028faa4f64a8e1581243aaf6785ee",
+                "sha256:b2b96cec8411a940a7f73da6965f13927d03d46fb5105c5bc63ed04f29b2b8f0"
+            ],
+            "index": "pypi",
+            "version": "==1.7.1"
+        },
+        "python-xlib": {
+            "hashes": [
+                "sha256:a90667c70905c6ef0754c8a09fa61acbc1e1b7ddb946d527831800d7cbfe9348",
+                "sha256:b251d6679796af4ddabc02b170a5c38eda41f92a83d08fdcfeef5841c6467ac7"
+            ],
+            "markers": "'linux' in sys_platform",
+            "version": "==0.27"
+        },
         "simpleaudio": {
             "hashes": [
                 "sha256:05b63da515f5fc7c6f40e4d9673d22239c5e03e2bda200fc09fd21c185d73713",
@@ -108,6 +132,14 @@
             ],
             "index": "pypi",
             "version": "==1.0.4"
+        },
+        "six": {
+            "hashes": [
+                "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
+                "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==1.15.0"
         },
         "twitchio": {
             "hashes": [
