@@ -6,7 +6,7 @@ from pydub.playback import play
 
 
 class Sound:
-    cooldown = 5 # cooldown is off (-1)
+    cooldown = -1 # cooldown is off (-1)
     volume = 7
     last_played = 0
 
