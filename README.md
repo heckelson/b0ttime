@@ -4,9 +4,10 @@ a smol twitch bot
 ## Requirements
 
 * `pipenv`
+* `pulseaudio-alsa`
 
 On Arch Linux it's as simple as:     
-`# pacman -Syu && sudo pacman -S python-pipenv`
+`# pacman -Syu && sudo pacman -S python-pipenv pulseaudio-alsa`
 
 Inside the folder, install the packages
 

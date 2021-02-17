@@ -1,4 +1,6 @@
 .env
+Pipfile
+Pipfile.lock
 count
 .idea/
 .idea/*

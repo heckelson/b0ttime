@@ -33,7 +33,7 @@ class DSMessages:
 
     def randommsg(self):
         # segmented message 175:5 full message
-        msgtype = random.randint(1, 180)
+        msgtype = random.randint(1, 181)
 
         if msgtype <= 175:
             # generate a message out of a segment and an insert

@@ -1,4 +1,5 @@
 # counter.py
+import logging
 
 class Counter:
     def __init__(self):
@@ -12,7 +13,7 @@ class Counter:
         except IOError as err:
             self.count = 0
 
-        print(f"Counter initialized as {self.count}")
+        logging.info(f"Counter initialized as {self.count}")
 
     def increment(self):
         self.count += 1

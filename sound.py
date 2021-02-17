@@ -1,9 +1,12 @@
 # sound.py
 import time
+import logging
+import contextlib, io
 
 from pydub import AudioSegment
-from pydub.playback import play
+from pydub.playback import play as pydub_play
 
+logging.basicConfig(level=logging.INFO)
 
 class Sound:
     cooldown = -1 # cooldown is off (-1)
@@ -12,11 +15,11 @@ class Sound:
 
     def play(self, path):
         if time.time() > (self.last_played + self.cooldown):
-            print(f"Sound {path} was played")
+            logging.info(f"Sound {path} was played")
             self._playsound(path)
             self.last_played = time.time()
         else:
-            print(f"Sound {path} was not played")
+            logging.warn(f"Sound {path} was not played")
 
     def _playsound(self, filename):
         if filename.endswith(".mp3"):
@@ -24,8 +27,10 @@ class Sound:
         elif filename.endswith(".wav"):
             sound = AudioSegment.from_file(filename) + self.volume
         else:
+            logger.warning("Sound file format not supported.")
             return
-        play(sound)
+
+        pydub_play(sound)
 
     def is_on_cooldown(self):
         return time.time() <= (self.last_played + self.cooldown)
@@ -33,5 +38,4 @@ class Sound:
 
 if __name__ == "__main__":
     s = Sound()
-
     s.play("sounds/oof.mp3")
